@@ -1,3 +1,4 @@
+
 from os import environ
 import unittest
 import asyncio
@@ -8,10 +9,15 @@ from discord.ext.commands import Bot, Cog
 from src.emoji_timer import EmojiTimerCog
 
 PREFIX = "!"
+
+# set following 4 strings as your environment var
+
 GUILD_ID_FOR_EMOJIS = "GUILD_ID_FOR_EMOJIS"
 GUILD_ID_TO_TEST = "GUILD_ID_TO_TEST"
 CHANNEL_ID_TO_TEST = "CHANNEL_ID_TO_TEST"
 ENV_VAR_NAME_FOR_TOKEN = "TEST_BOT_TOKEN"
+
+
 intents = discord.Intents.all()
 bot = discord.ext.commands.Bot(PREFIX, intents=intents)
 
