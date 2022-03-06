@@ -135,7 +135,7 @@ class EmojiTimerCog(EmojiLoaderCog):
     async def on_timer_finished(self, message: discord.Message, delay=3, **kwargs) -> None:
         await messaging.delete(message, delay=delay)
         self._clear_dicts(message.channel)
-        logger.info(f"Countdown successfully finished in channel: {channel.name}")
+        logger.info(f"Countdown successfully finished in channel: {message.channel.name}")
 
     @command()
     async def stop(self, ctx: discord.ext.commands.Context, *, channel: discord.TextChannel = None) -> None:
