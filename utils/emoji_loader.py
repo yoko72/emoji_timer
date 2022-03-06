@@ -1,6 +1,7 @@
+from functools import lru_cache
+
 import discord
 from discord.ext.commands import command, Cog
-from functools import lru_cache
 
 
 class EmojiLoaderCog(Cog):
