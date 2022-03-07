@@ -2,7 +2,7 @@
 
 ## Usage
 
-Register all images in the dir to a guild. 
+Register all images in the 'images' dir to a server. 
 Then, pass the id of the guild on initializing EmojiTimerCog.
 
 
