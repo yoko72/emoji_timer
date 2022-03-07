@@ -40,11 +40,9 @@ class EmojiTimerCog(EmojiLoaderCog):
     def get_timer(self, textchannel_id: int) -> CountDownTimer:
         return self._timer_dict.get(textchannel_id)
 
-    def set_timer(self, textchannel_id: int, task: CountDownTimer):
-        self._timer_dict[textchannel_id] = task
+    def set_timer(self, textchannel_id: int, timer: CountDownTimer):
+        self._timer_dict[textchannel_id] = timer
 
-    # @discord.ext.commands.max_concurrency is not enough
-    # since following func can run from non-command actions in derived class.
     @command()
     async def countdown(self, ctx: discord.ext.commands.Context = None,
                         *, minutes: Optional[int] = None, channel: Optional[discord.TextChannel] = None):
