@@ -5,6 +5,10 @@
 Register all images in the 'images' dir to a server. 
 Then, pass the id of the guild on initializing EmojiTimerCog.
 
+If you want to simply run the bot with only this cog,
+`$ python src/emoji_timer.py`
+after you set GUILD_ID_FOR_EMOJIS, TOKEN_OF_EMOJI_TIMER as environment variables.
+
 
 ## LICENSE
 
