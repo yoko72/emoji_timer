@@ -107,6 +107,7 @@ class EmojiTimerCog(EmojiLoaderCog):
         sentence = "".join([str(timer_icon)] + self._seconds_to_emojis(seconds))
         return sentence
 
+    # noinspection PyUnusedLocal
     def get_timer_icon(self, **kwargs):
         return self.get_emoji(emoji_name=self.DEFAULT_TIMER_ICON_NAME)
 
@@ -132,6 +133,7 @@ class EmojiTimerCog(EmojiLoaderCog):
         emoji_name = num_str + self.suffixes_of_images[digit_place]
         return self.get_emoji(emoji_name=emoji_name)
 
+    # noinspection PyUnusedLocal
     async def on_timer_finished(self, message: discord.Message, delay=3, **kwargs) -> None:
         await messaging.delete(message, delay=delay)
         self._clear_dicts(message.channel)
@@ -175,3 +177,21 @@ class EmojiTimerCog(EmojiLoaderCog):
                 del _dict[channel.id]
             except KeyError:
                 pass
+
+
+if __name__ == "__main__":
+    from os import environ
+
+    PREFIX = "!"
+    GUILD_ID_FOR_EMOJIS = "GUILD_ID_FOR_EMOJIS"
+    ENV_VAR_NAME_FOR_TOKEN = "TOKEN_OF_EMOJI_TIMER"
+
+    def main():
+        intents = discord.Intents.all()
+        bot = discord.ext.commands.Bot(PREFIX, intents=intents)
+        guild_id_for_emojis = int(environ[GUILD_ID_FOR_EMOJIS])
+        bot.add_cog(EmojiTimerCog(bot, guild_id_for_emojis))
+        token = environ[ENV_VAR_NAME_FOR_TOKEN]
+        bot.run(token)
+
+    main()
