@@ -185,7 +185,9 @@ if __name__ == "__main__":
     ENV_VAR_NAME_FOR_TOKEN = "TOKEN_OF_EMOJI_TIMER"
 
     def main():
-        intents = discord.Intents.all()
+        intents: discord.Intents = discord.Intents.default()
+        intents.typing = False
+        intents.presences = False
         bot = discord.ext.commands.Bot(PREFIX, intents=intents)
         guild_id_for_emojis = int(environ[GUILD_ID_FOR_EMOJIS])
         bot.add_cog(EmojiTimerCog(bot, guild_id_for_emojis))
